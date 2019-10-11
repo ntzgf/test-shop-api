@@ -7,41 +7,54 @@ generator photon {
   provider = "photonjs"
 }
 
-model Blog {
-  id        Int      @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String
-  viewCount Int      @default(0)
-  posts     Post[]
-  authors   User[]
+model Customer {
+  id          Int      @id
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  customerType     CustomerType
+  addresses   Address[]
 }
 
-model User {
-  id        Int      @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String?
-  posts     Post[]
-  blog      Blog
-  rating    Float
-  role      UserRole
+model Address {
+  id       Int @id
+  customer Customer
+  street   String
+  zip      String
+  location String
+  country  String
 }
 
-enum UserRole {
-  ADMIN
-  AUTHOR
+enum CustomerType {
+  B2b
+  B2bLight
+  B2c
+  Guest
 }
 
-model Post {
-  id     Int        @id
-  title  String
-  tags   String[]
-  blog   Blog
-  status PostStatus
+model Product {
+  id          Int   @id
+  articleNum  Int
+  name        String
+  description String
+  price       Int
+  color       Color
+  rating      Float
 }
 
-enum PostStatus {
-  DRAFT
-  PUBLISHED
+enum Color {
+  RED
+  BLUE
+  GREEN
+  YELLOW
+}
+
+model Purchase {
+  id          String   @id @default(cuid())
+  purchaseId  String?
+  revenue     Int
+  tax         Int
+  shipping    Int
+  coupon      String?
+  Customer    Customer
+  products    Product[]
 }
