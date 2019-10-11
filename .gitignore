@@ -1,0 +1,10 @@
+node_modules/
+
+# lift migrations
+migrations/
+
+# lift db
+dev.db
+
+# nexus client
+generated/
