@@ -1,4 +1,5 @@
 node_modules/
+dist/
 
 # lift migrations
 migrations/
@@ -8,3 +9,6 @@ dev.db
 
 # nexus client
 generated/
+
+# VS Code settings
+.vscode/
