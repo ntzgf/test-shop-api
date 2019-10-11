@@ -1,9 +1,6 @@
 node_modules/
 dist/
 
-# lift migrations
-migrations/
-
 # lift db
 dev.db
 

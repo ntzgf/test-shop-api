@@ -1,0 +1,381 @@
+{
+  "version": "0.2.50",
+  "steps": [
+    {
+      "stepType": "CreateModel",
+      "name": "Customer",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Address",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Product",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Purchase",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Customer",
+      "name": "id",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Customer",
+      "name": "createdAt",
+      "type": {
+        "Base": "DateTime"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "default": {
+        "Expression": [
+          "now",
+          "DateTime",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Customer",
+      "name": "updatedAt",
+      "type": {
+        "Base": "DateTime"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Customer",
+      "name": "cusType",
+      "type": {
+        "Enum": "CusType"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Customer",
+      "name": "addresses",
+      "type": {
+        "Relation": {
+          "to": "Address",
+          "to_fields": [],
+          "name": "AddressToCustomer",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Customer",
+      "name": "purchase",
+      "type": {
+        "Relation": {
+          "to": "Purchase",
+          "to_fields": [
+            "id"
+          ],
+          "name": "CustomerToPurchase",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Address",
+      "name": "id",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Address",
+      "name": "customer",
+      "type": {
+        "Relation": {
+          "to": "Customer",
+          "to_fields": [
+            "id"
+          ],
+          "name": "AddressToCustomer",
+          "on_delete": "None"
+        }
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Address",
+      "name": "street",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Address",
+      "name": "zip",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Address",
+      "name": "location",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "id",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "articleNum",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "description",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "price",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "color",
+      "type": {
+        "Enum": "Color"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "rating",
+      "type": {
+        "Base": "Float"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "purchase",
+      "type": {
+        "Relation": {
+          "to": "Purchase",
+          "to_fields": [
+            "id"
+          ],
+          "name": "ProductToPurchase",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "purchaseId",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "revenue",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "tax",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "shipping",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "coupon",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "Customer",
+      "type": {
+        "Relation": {
+          "to": "Customer",
+          "to_fields": [],
+          "name": "CustomerToPurchase",
+          "on_delete": "None"
+        }
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Purchase",
+      "name": "products",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [],
+          "name": "ProductToPurchase",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateEnum",
+      "name": "CusType",
+      "values": [
+        "B2b",
+        "B2bLight",
+        "B2c",
+        "Guest"
+      ]
+    },
+    {
+      "stepType": "CreateEnum",
+      "name": "Color",
+      "values": [
+        "RED",
+        "BLUE",
+        "GREEN",
+        "YELLOW"
+      ]
+    }
+  ]
+}

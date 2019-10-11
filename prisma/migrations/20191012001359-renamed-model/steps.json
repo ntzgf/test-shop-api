@@ -1,0 +1,44 @@
+{
+  "version": "0.2.50",
+  "steps": [
+    {
+      "stepType": "CreateField",
+      "model": "Customer",
+      "name": "customerType",
+      "type": {
+        "Enum": "CustomerType"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Address",
+      "name": "country",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "DeleteField",
+      "model": "Customer",
+      "name": "cusType"
+    },
+    {
+      "stepType": "CreateEnum",
+      "name": "CustomerType",
+      "values": [
+        "B2b",
+        "B2bLight",
+        "B2c",
+        "Guest"
+      ]
+    },
+    {
+      "stepType": "DeleteEnum",
+      "name": "CusType"
+    }
+  ]
+}

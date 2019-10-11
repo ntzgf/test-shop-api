@@ -10,3 +10,7 @@ The XYZ shop's API project
 ### Migration(en) durchführen
 
     yarn prisma2 lift up
+
+## TODO
+
+- API Endpunkt definieren

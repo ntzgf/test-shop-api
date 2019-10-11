@@ -11,8 +11,7 @@ model Customer {
   id          Int      @id
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  email       String
-  customerType     CustomerType
+  cusType     CusType
   addresses   Address[]
 }
 
@@ -22,10 +21,9 @@ model Address {
   street   String
   zip      String
   location String
-  country  String
 }
 
-enum CustomerType {
+enum CusType {
   B2b
   B2bLight
   B2c
@@ -39,7 +37,7 @@ model Product {
   description String
   price       Int
   color       Color
-  rating      Float
+  rating    Float
 }
 
 enum Color {
